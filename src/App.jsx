@@ -1,28 +1,32 @@
-import { useState } from 'react'
+import React from 'react';
+import Navbar from './components/Navbar.jsx';
+import Hero from './components/Hero.jsx';
+import CertificationCarousel from './components/CertificationCarousel.jsx';
+import Footer from './components/Footer.jsx';
+import { MessageCircle } from 'lucide-react';
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const handleWhatsApp = () => {
+    window.open('https://wa.me/94771234567', '_blank', 'noopener,noreferrer');
+  };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 to-blue-50 flex items-center justify-center">
-      <div className="bg-white p-8 rounded-lg shadow-lg">
-        <h1 className="text-3xl font-bold text-gray-800 mb-4">
-          Vibe Coding Platform
-        </h1>
-        <p className="text-gray-600 mb-6">
-          Your AI-powered development environment
-        </p>
-        <div className="text-center">
-          <button
-            onClick={() => setCount(count + 1)}
-            className="bg-blue-500 hover:bg-blue-600 text-white font-semibold py-2 px-4 rounded"
-          >
-            Count is {count}
-          </button>
-        </div>
-      </div>
-    </div>
-  )
-}
+    <div className="min-h-screen bg-white text-gray-900">
+      <Navbar />
+      <main>
+        <Hero />
+        <CertificationCarousel />
+      </main>
+      <Footer />
 
-export default App
+      {/* Floating WhatsApp Button */}
+      <button
+        onClick={handleWhatsApp}
+        aria-label="Chat on WhatsApp"
+        className="fixed bottom-5 right-5 h-14 w-14 rounded-full bg-emerald-500 hover:bg-emerald-600 text-white shadow-xl flex items-center justify-center transition-transform duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-300 animate-pulse"
+      >
+        <MessageCircle className="h-7 w-7" />
+      </button>
+    </div>
+  );
+}
